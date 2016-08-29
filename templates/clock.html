@@ -1,0 +1,81 @@
+﻿<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>超酷数码钟表</title>
+    <link href="../css/block.css" rel="stylesheet" type="text/css" />
+    <script>
+    function toDou(iNum) {
+        return iNum < 10 ? '0' + iNum : '' + iNum;
+    }
+    var arr = ['seven', 'one', 'two', 'three', 'four', 'five', 'six'];
+    window.onload = function() {
+        var oYearBox = document.getElementById('year');
+        var oTimeBox = document.getElementById('time');
+        var aImg = oYearBox.getElementsByTagName('img');
+        var aImg2 = oTimeBox.getElementsByTagName('img');
+
+        function tick() {
+            var oDate = new Date();
+            var Y = oDate.getFullYear();
+            var M = oDate.getMonth() + 1;
+            var D = oDate.getDate();
+            var h = oDate.getHours();
+            var m = oDate.getMinutes();
+            var s = oDate.getSeconds();
+            var W = oDate.getDay();
+            var str = Y + ' ' + toDou(M) + ' ' + toDou(D);
+            for (var i = 0; i < aImg.length; i++) {
+                if (aImg[i].className == 'num') {
+                    aImg[i].src = '../img/clock/' + str.charAt(i) + '.png';
+                }
+            }
+            var str2 = toDou(h) + ':' + toDou(m) + ':' + toDou(s);
+            for (var i = 0; i < aImg2.length; i++) {
+                if (aImg2[i].className == 'num') {
+                    aImg2[i].src = '../img/clock/' + str2.charAt(i) + '.png';
+                }
+                if (aImg2[i].className == 'num2') {
+                    aImg2[i].src = '../img/clock/' + arr[W] + '.png';
+                }
+            }
+        }
+        tick();
+        setInterval(tick, 1000);
+    };
+    </script>
+</head>
+
+<body>
+    <div id="clock" class="date">
+        <h2><img src="../img/clock/title.png" /></h2>
+        <div class="year" id="year">
+            <img class="num" src="../img/clock/0.png" alt="0" />
+            <img class="num" src="../img/clock/0.png" alt="0" />
+            <img class="num" src="../img/clock/0.png" alt="0" />
+            <img class="num" src="../img/clock/0.png" alt="0" />
+            <img src="../img/clock/year.png" alt="year" />
+            <img class="num" src="../img/clock/0.png" alt="0" />
+            <img class="num" src="../img/clock/0.png" alt="0" />
+            <img src="../img/clock/month.png" alt="month" />
+            <img class="num" src="../img/clock/0.png" alt="0" />
+            <img class="num" src="../img/clock/0.png" alt="0" />
+            <img src="../img/clock/seven.png" alt="seven" />
+        </div>
+        <div class="time" id="time">
+            <img class="num" src="../img/clock/0.png" alt="0" />
+            <img class="num" src="../img/clock/0.png" alt="0" />
+            <img src="../img/clock/sign.png" alt="sign" />
+            <img class="num" src="../img/clock/0.png" alt="0" />
+            <img class="num" src="../img/clock/0.png" alt="0" />
+            <img src="../img/clock/sign.png" alt="sign" />
+            <img class="num" src="../img/clock/0.png" alt="0" />
+            <img class="num" src="../img/clock/0.png" alt="0" />
+            <img class="pos2" src="../img/clock/week.png" alt="week" />
+            <img class="num2" id="week" src="../img/clock/one.png" alt="one" />
+        </div>
+    </div>
+</body>
+
+</html>

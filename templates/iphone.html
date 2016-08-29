@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>仿苹果移动滑块解锁</title>
+    <style>
+        body{
+            background: #1782ff;
+        }
+        #box{
+            width: 300px;
+            height: 44px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            position: relative;
+            text-align: center;
+
+
+        }
+        #box #sp1{
+            width: 100%;
+            position: absolute;
+            text-align: center;
+            left: 0;
+            top: 0;
+            font-size: 44px;
+            z-index: 2;
+            color:rgba(0,0,0,0);
+        }
+        #box #sp2{
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            font-size: 44px;
+            z-index: 1;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            var oSp1 = document.getElementById('sp1');
+            var i = -50;
+            setInterval(function(){
+                i+=3;
+                oSp1.style.background = '-webkit-linear-gradient(-30deg,rgba(255,255,255,0) '+i+'px,rgba(255,255,255,1) '+(i+20)+'px ,rgba(255,255,255,0) '+(i+40)+'px)';
+                oSp1.style.WebkitBackgroundClip = 'text';
+                if(i>=350){
+                    i=-50;
+                }
+            },30);
+            
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <span id="sp1">移动滑块解锁</span>
+        <span id="sp2">移动滑块解锁</span>
+    </div>
+</body>
+</html>

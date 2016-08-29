@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>时钟</title>
+    <style type="text/css">
+    .box {
+        width: 300px;
+        height: 300px;
+        border: 5px solid #000;
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        margin-left: -150px;
+        top: 50%;
+        margin-top: -150px;
+    }
+    
+    .hour {
+        width: 16px;
+        height: 100px;
+        background: #000;
+        position: absolute;
+        left: 50%;
+        margin-top: 50px;
+        margin-left: -8px;
+        -webkit-transform-origin: center bottom;
+    }
+    
+    .minutes {
+        width: 8px;
+        height: 120px;
+        background: #000;
+        margin-top: 30px;
+        position: absolute;
+        left: 50%;
+        margin-left: -4px;
+        -webkit-transform-origin: center bottom;
+    }
+    
+    .seconds {
+        width: 4px;
+        height: 140px;
+        background: #f00;
+        margin-top: 10px;
+        position: absolute;
+        left: 50%;
+        margin-left: -2px;
+        -webkit-transform-origin: center bottom;
+    }
+    
+    .m_dial {
+        width: 2px;
+        height: 8px;
+        background: #000;
+        position: absolute;
+        left: 50%;
+        margin-left: -1px;
+        -webkit-transform-origin: center 150px;
+    }
+    
+    .s_dial {
+        width: 6px;
+        height: 14px;
+        background: #000;
+        position: absolute;
+        left: 50%;
+        margin-left: -3px;
+        -webkit-transform-origin: center 150px;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var oBox = document.getElementsByTagName('div')[0];
+        var oHour = oBox.getElementsByTagName('div')[0];
+        var oMin = oBox.getElementsByTagName('div')[1];
+        var oSec = oBox.getElementsByTagName('div')[2];
+        tick();
+
+        for (var i = 0; i < 60; i++) {
+            var oS = document.createElement('span');
+            if (i % 5 === 0) {
+                oS.className = 's_dial';
+            } else {
+                oS.className = 'm_dial';
+            }
+            oS.style.transform = 'rotate(' + i * 6 + 'deg)';
+            oBox.appendChild(oS);
+        };
+
+
+        function tick() {
+            var oDate = new Date();
+            oHour.style.transform = 'rotate(' + oDate.getHours() * 30 + 'deg)';
+            oMin.style.transform = 'rotate(' + oDate.getMinutes() * 6 + 'deg)';
+            oSec.style.transform = 'rotate(' + oDate.getSeconds() * 6 + 'deg)';
+        }
+        setInterval(tick, 30);
+    }
+    </script>
+</head>
+
+<body>
+    <div class="box">
+        <div class="hour"></div>
+        <div class="minutes"></div>
+        <div class="seconds"></div>
+    </div>
+</body>
+
+</html>
